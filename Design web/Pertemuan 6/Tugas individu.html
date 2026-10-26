@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 6 - Mockup & Design System Restoran</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Comic+Neue:wght@700&family=Papyrus&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '#573CFA',
+                            secondary: '#FB8D1A',
+                            neutral: '#1C1A27',
+                            danger: '#E8083E',
+                            success: '#02864A',
+                            surface: '#F8FAFC',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        badHeadline: ['Comic Neue', 'cursive'],
+                        badPapyrus: ['Papyrus', 'fantasy']
+                    },
+                    spacing: {
+                        'xs-5': '5px',
+                        's-10': '10px',
+                        'm-15': '15px',
+                        'l-25': '25px',
+                        'xl-40': '40px',
+                        'xxl-65': '65px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom styling for border radius visual formula (Outer = 2 x Inner) */
+        .outer-card-good {
+            border-radius: 24px;
+            padding: 16px;
+        }
+        .inner-img-good {
+            border-radius: 12px; /* 24px / 2 */
+        }
+        
+        /* Bad styling examples for Before view */
+        .bad-card {
+            border-radius: 4px;
+            padding: 2px;
+        }
+        .bad-inner-img {
+            border-radius: 25px; /* Inconsistent outer vs inner radius */
+        }
+
+        /* Responsive Frame Simulator */
+        .preview-viewport-desktop {
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        .preview-viewport-mobile {
+            width: 375px;
+            margin: 0 auto;
+            border: 8px solid #334155;
+            border-radius: 36px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="h-full text-slate-800 font-sans flex flex-col">
+
+    <!-- Header Navigation -->
+    <header class="bg-brand-neutral text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-xl bg-brand-primary flex items-center justify-center font-bold text-lg shadow-lg">
+                        P6
+                    </div>
+                    <div>
+                        <h1 class="text-base font-bold tracking-tight leading-none">Tugas Individu Pertemuan 6</h1>
+                        <p class="text-xs text-slate-400 mt-0.5">Mockup, Visual Hierarchy, Warna & Tipografi</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="flex space-x-1 sm:space-x-2 bg-slate-800/60 p-1.5 rounded-xl text-xs sm:text-sm">
+                    <button onclick="switchTab('ds-tab')" id="btn-ds-tab" class="tab-btn active px-3 py-1.5 rounded-lg font-medium transition-all bg-brand-primary text-white shadow-sm">
+                        <i class="fa-solid fa-palette mr-1.5"></i>Design System
+                    </button>
+                    <button onclick="switchTab('mockup-tab')" id="btn-mockup-tab" class="tab-btn px-3 py-1.5 rounded-lg font-medium text-slate-300 hover:text-white transition-all">
+                        <i class="fa-solid fa-desktop mr-1.5"></i>Mockup Restoran
+                    </button>
+                    <button onclick="switchTab('report-tab')" id="btn-report-tab" class="tab-btn px-3 py-1.5 rounded-lg font-medium text-slate-300 hover:text-white transition-all">
+                        <i class="fa-solid fa-file-lines mr-1.5"></i>Laporan & Analisis
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- ================= TAB 1: DESIGN SYSTEM ================= -->
+        <section id="ds-tab" class="tab-content space-y-8">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <h2 class="text-2xl font-bold text-slate-900 mb-2">1. Simple Design System</h2>
+                <p class="text-slate-600 text-sm">Dokumentasi komponen visual standar berdasarkan materi Pertemuan 6 (Warna, Tipografi, Spacing, Buttons, Forms, & Cards).</p>
+            </div>
+
+            <!-- Color Palette Section -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                    <span class="w-3 h-3 rounded-full bg-brand-primary mr-2"></span>Color Palette Breakdown
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                    <div class="p-4 rounded-xl bg-[#573CFA] text-white shadow-md">
+                        <div class="font-semibold text-sm">Primary</div>
+                        <div class="text-xs opacity-90 font-mono mt-1">#573CFA</div>
+                        <div class="text-[10px] opacity-75 mt-3">Brand Utama, CTA Utama</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-[#FB8D1A] text-white shadow-md">
+                        <div class="font-semibold text-sm">Secondary</div>
+                        <div class="text-xs opacity-90 font-mono mt-1">#FB8D1A</div>
+                        <div class="text-[10px] opacity-75 mt-3">Accent, Highlight, Badge</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-[#1C1A27] text-white shadow-md">
+                        <div class="font-semibold text-sm">Neutral</div>
+                        <div class="text-xs opacity-90 font-mono mt-1">#1C1A27</div>
+                        <div class="text-[10px] opacity-75 mt-3">Text, Dark Bg, Navbar</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-[#E8083E] text-white shadow-md">
+                        <div class="font-semibold text-sm">Danger</div>
+                        <div class="text-xs opacity-90 font-mono mt-1">#E8083E</div>
+                        <div class="text-[10px] opacity-75 mt-3">Error, Alert, Hapus</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-[#02864A] text-white shadow-md">
+                        <div class="font-semibold text-sm">Success</div>
+                        <div class="text-xs opacity-90 font-mono mt-1">#02864A</div>
+                        <div class="text-[10px] opacity-75 mt-3">Status Berhasil, Tag</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typography & Type Scale Section -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                    <span class="w-3 h-3 rounded-full bg-brand-primary mr-2"></span>Typography System (Inter Font)
+                </h3>
+                <div class="space-y-4 divide-y divide-slate-100">
+                    <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs font-mono font-semibold text-brand-primary bg-indigo-50 px-2 py-1 rounded">H1 / Headline 1</span>
+                            <h1 class="text-4xl font-extrabold text-slate-900 mt-1">Sajian Restoran Terbaik</h1>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">Size: 36px / Line Height: 1.2 / Weight: 800</span>
+                    </div>
+                    <div class="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs font-mono font-semibold text-brand-primary bg-indigo-50 px-2 py-1 rounded">H2 / Headline 2</span>
+                            <h2 class="text-2xl font-bold text-slate-900 mt-1">Menu Favorit Minggu Ini</h2>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">Size: 24px / Line Height: 1.3 / Weight: 700</span>
+                    </div>
+                    <div class="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs font-mono font-semibold text-brand-primary bg-indigo-50 px-2 py-1 rounded">H3 / Subheadline</span>
+                            <h3 class="text-lg font-semibold text-slate-800 mt-1">Detail Makanan & Resep Rahasia</h3>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">Size: 18px / Line Height: 1.4 / Weight: 600</span>
+                    </div>
+                    <div class="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs font-mono font-semibold text-brand-primary bg-indigo-50 px-2 py-1 rounded">Body Text</span>
+                            <p class="text-base text-slate-600 mt-1 max-w-2xl">Kami menyajikan hidangan berkualitas tinggi dengan bahan-bahan segar organik yang dipilih langsung dari petani lokal.</p>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">Size: 16px / Line Height: 1.5 / Weight: 400</span>
+                    </div>
+                    <div class="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs font-mono font-semibold text-brand-primary bg-indigo-50 px-2 py-1 rounded">Caption & Helper</span>
+                            <span class="text-xs text-slate-500 block mt-1">*Harga sudah termasuk pajak pemerintah dan service charge.</span>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">Size: 12px / Line Height: 1.4 / Weight: 400</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spacing System & Buttons -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Spacing System -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                        <span class="w-3 h-3 rounded-full bg-brand-primary mr-2"></span>Spacing System
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-24 text-xs font-mono font-semibold">XS (5px)</div>
+                            <div class="h-6 bg-indigo-200 rounded" style="width: 5px;"></div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-24 text-xs font-mono font-semibold">S (10px)</div>
+                            <div class="h-6 bg-indigo-300 rounded" style="width: 10px;"></div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-24 text-xs font-mono font-semibold">M (15px)</div>
+                            <div class="h-6 bg-indigo-400 rounded" style="width: 15px;"></div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-24 text-xs font-mono font-semibold">L (25px)</div>
+                            <div class="h-6 bg-indigo-500 rounded" style="width: 25px;"></div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-24 text-xs font-mono font-semibold">XL (40px)</div>
+                            <div class="h-6 bg-indigo-600 rounded" style="width: 40px;"></div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-24 text-xs font-mono font-semibold">XXL (65px)</div>
+                            <div class="h-6 bg-brand-primary rounded" style="width: 65px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Button Components -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                        <span class="w-3 h-3 rounded-full bg-brand-primary mr-2"></span>Button Variants & States
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <button class="px-5 py-2.5 bg-brand-primary text-white font-medium rounded-xl hover:bg-opacity-90 hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                            Primary CTA
+                        </button>
+                        <button class="px-5 py-2.5 bg-brand-secondary text-white font-medium rounded-xl hover:bg-opacity-90 hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                            Secondary CTA
+                        </button>
+                        <button class="px-5 py-2.5 bg-brand-success text-white font-medium rounded-xl hover:bg-opacity-90 hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                            Success Button
+                        </button>
+                        <button class="px-5 py-2.5 bg-brand-danger text-white font-medium rounded-xl hover:bg-opacity-90 hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                            Danger Button
+                        </button>
+                        <button class="px-5 py-2.5 bg-slate-100 text-slate-700 border border-slate-200 font-medium rounded-xl hover:bg-slate-200 transition-all">
+                            Outline / Neutral
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Controls & Cards -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Form Controls -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center">
+                        <span class="w-3 h-3 rounded-full bg-brand-primary mr-2"></span>Form Controls & Input States
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Pemesan</label>
+                            <input type="text" placeholder="Masukkan nama Anda..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent text-sm transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Pilih Restoran</label>
+                            <select class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent text-sm transition bg-white">
+                                <option>Gourmet Bistro - Jakarta</option>
+                                <option>Gourmet Bistro - Bandung</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center space-x-4 pt-1">
+                            <label class="flex items-center space-x-2 text-sm text-slate-700 cursor-pointer">
+                                <input type="checkbox" checked class="w-4 h-4 text-brand-primary rounded accent-brand-primary focus:ring-brand-primary">
+                                <span>Ingat Meja Saya</span>
+                            </label>
+                            <label class="flex items-center space-x-2 text-sm text-slate-700 cursor-pointer">
+                                <input type="radio" name="pay" checked class="w-4 h-4 text-brand-primary accent-brand-primary">
+                                <span>Bayar Di Tempat</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cards & Border Radius Formula -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 flex items-center">
+                        <span class="w-3 h-3 rounded-full bg-brand-primary mr-2"></span>Card & Radius Consistency Rule
+                    </h3>
+                    <p class="text-xs text-slate-500 mb-4">Formula Standar Slide 7: <strong class="text-brand-primary">Outer Radius = 2 × Inner Radius</strong></p>
+
+                    <div class="outer-card-good bg-slate-100 border border-slate-200 flex items-center space-x-4">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=120&h=120&fit=crop" class="inner-img-good w-20 h-20 object-cover shadow" alt="Makanan">
+                        <div>
+                            <span class="text-[10px] uppercase tracking-wider font-bold text-brand-secondary">Formula Benar (24px : 12px)</span>
+                            <h4 class="font-bold text-slate-900 text-sm">Salad Organik Premium</h4>
+                            <p class="text-xs text-slate-500 mt-1">Lengkungan outer dan inner selaras harmonis secara visual.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: MOCKUP RESTORAN (STUDI KASUS) ================= -->
+        <section id="mockup-tab" class="tab-content hidden space-y-6">
+            
+            <!-- Control Toolbar -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3">
+                    <span class="text-sm font-semibold text-slate-700">Versi Desain:</span>
+                    <div class="bg-slate-100 p-1 rounded-xl flex space-x-1 border border-slate-200">
+                        <button onclick="setVersion('after')" id="btn-ver-after" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-brand-primary text-white shadow-sm transition">
+                            <i class="fa-solid fa-circle-check mr-1 text-emerald-300"></i>Sesudah (Good UI/UX)
+                        </button>
+                        <button onclick="setVersion('before')" id="btn-ver-before" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
+                            <i class="fa-solid fa-circle-xmark mr-1 text-rose-500"></i>Sebelum (Bad UI/UX)
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-3">
+                    <span class="text-sm font-semibold text-slate-700">Simulasi Device:</span>
+                    <div class="bg-slate-100 p-1 rounded-xl flex space-x-1 border border-slate-200">
+                        <button onclick="setDevice('desktop')" id="btn-dev-desktop" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 text-white shadow-sm transition">
+                            <i class="fa-solid fa-laptop mr-1"></i>Desktop
+                        </button>
+                        <button onclick="setDevice('mobile')" id="btn-dev-mobile" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
+                            <i class="fa-solid fa-mobile-screen mr-1"></i>Mobile (375px)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEWPORT CONTAINER -->
+            <div id="viewport-container" class="preview-viewport-desktop transition-all duration-300">
+                
+                <!-- ================= VERSION: AFTER (SESUDAH - GOOD UI) ================= -->
+                <div id="version-after-view" class="bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden min-h-[600px] flex flex-col">
+                    
+                    <!-- Navbar (Restoran Header) -->
+                    <nav class="bg-brand-neutral text-white px-6 py-4 flex flex-wrap items-center justify-between gap-4 border-b border-slate-800">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center font-bold text-xl text-white shadow-md">
+                                <i class="fa-solid fa-utensils"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold text-lg tracking-tight block leading-tight">Gourmet Haven</span>
+                                <span class="text-[10px] text-brand-secondary font-medium tracking-widest uppercase">Fine Dining Resto</span>
+                            </div>
+                        </div>
+
+                        <!-- Horizontal Nav Menu -->
+                        <div class="flex items-center space-x-6 text-sm font-medium">
+                            <a href="#" class="text-brand-secondary font-semibold">Beranda</a>
+                            <a href="#" class="text-slate-300 hover:text-white transition">Tentang</a>
+                            <a href="#" class="text-slate-300 hover:text-white transition">Fasilitas</a>
+                            <a href="#" class="text-slate-300 hover:text-white transition">Layanan</a>
+                            <a href="#" class="text-slate-300 hover:text-white transition">Kontak</a>
+                        </div>
+                    </nav>
+
+                    <!-- Main Content Section -->
+                    <main class="flex-1">
+                        <!-- Head Banner (Hero Section) -->
+                        <div class="relative bg-gradient-to-r from-brand-neutral via-slate-900 to-indigo-950 text-white px-6 py-12 md:py-16">
+                            <div class="max-w-3xl space-y-4">
+                                <span class="px-3 py-1 rounded-full bg-brand-secondary/20 text-brand-secondary text-xs font-semibold border border-brand-secondary/30">
+                                    Promosi Spesial Minggu Ini
+                                </span>
+                                <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+                                    Nikmati Sensasi Kuliner Otentik Berkelas Dunia
+                                </h1>
+                                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                                    Dibuat dari bahan-bahan segar organik pilihan chef berpengalaman. Reservasi meja Anda sekarang dan dapatkan diskon 20% untuk kunjungan pertama.
+                                </p>
+                                <div class="pt-2 flex flex-wrap gap-3">
+                                    <button class="px-6 py-3 bg-brand-primary hover:bg-opacity-90 text-white font-medium rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
+                                        Reservasi Meja
+                                    </button>
+                                    <button class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium rounded-xl border border-slate-700 transition">
+                                        Lihat Menu
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Content Area: Food Menu Grid -->
+                        <section class="content p-6 sm:p-8 bg-slate-50 space-y-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h2 class="text-2xl font-bold text-slate-900">Menu Rekomendasi</h2>
+                                    <p class="text-xs text-slate-500 mt-0.5">Pilihan hidangan favorit pengunjung kami</p>
+                                </div>
+                                <span class="text-xs font-semibold text-brand-primary bg-indigo-50 px-3 py-1.5 rounded-lg border border-indigo-100">
+                                    3 Item Ditampilkan
+                                </span>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <!-- Menu Card 1 -->
+                                <div class="outer-card-good bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                                    <div class="space-y-3">
+                                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=250&fit=crop" class="inner-img-good w-full h-44 object-cover" alt="Steak">
+                                        <div class="flex justify-between items-start">
+                                            <h3 class="font-bold text-slate-900 text-base">Tenderloin Steak Premium</h3>
+                                            <span class="text-xs font-bold text-brand-success bg-emerald-50 px-2 py-1 rounded">Rp 185.000</span>
+                                        </div>
+                                        <p class="text-xs text-slate-500 leading-relaxed">Daging sapi wagyu pilihan disajikan dengan saus mushroom spesial dan kentang panggang.</p>
+                                    </div>
+                                    <button class="w-full mt-4 py-2.5 bg-brand-primary text-white text-xs font-semibold rounded-xl hover:bg-opacity-90 transition">
+                                        Pesan Sekarang
+                                    </button>
+                                </div>
+
+                                <!-- Menu Card 2 -->
+                                <div class="outer-card-good bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                                    <div class="space-y-3">
+                                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=250&fit=crop" class="inner-img-good w-full h-44 object-cover" alt="Pasta">
+                                        <div class="flex justify-between items-start">
+                                            <h3 class="font-bold text-slate-900 text-base">Truffle Carbonara Pasta</h3>
+                                            <span class="text-xs font-bold text-brand-success bg-emerald-50 px-2 py-1 rounded">Rp 120.000</span>
+                                        </div>
+                                        <p class="text-xs text-slate-500 leading-relaxed">Pasta buatan sendiri dengan keju parmesan tua, minyak truffle asli, dan smoked beef.</p>
+                                    </div>
+                                    <button class="w-full mt-4 py-2.5 bg-brand-primary text-white text-xs font-semibold rounded-xl hover:bg-opacity-90 transition">
+                                        Pesan Sekarang
+                                    </button>
+                                </div>
+
+                                <!-- Menu Card 3 -->
+                                <div class="outer-card-good bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                                    <div class="space-y-3">
+                                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=250&fit=crop" class="inner-img-good w-full h-44 object-cover" alt="Pizza">
+                                        <div class="flex justify-between items-start">
+                                            <h3 class="font-bold text-slate-900 text-base">Artisan Artisan Pizza</h3>
+                                            <span class="text-xs font-bold text-brand-success bg-emerald-50 px-2 py-1 rounded">Rp 145.000</span>
+                                        </div>
+                                        <p class="text-xs text-slate-500 leading-relaxed">Pizza panggang kayu bakar dengan topping keju mozzarella melimpah dan daun basil segar.</p>
+                                    </div>
+                                    <button class="w-full mt-4 py-2.5 bg-brand-primary text-white text-xs font-semibold rounded-xl hover:bg-opacity-90 transition">
+                                        Pesan Sekarang
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
+                    </main>
+
+                    <!-- Restoran Footer -->
+                    <footer class="bg-brand-neutral text-slate-400 px-6 py-8 text-xs border-t border-slate-800">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center justify-between">
+                            <div>
+                                <p class="font-semibold text-white text-sm mb-1">Gourmet Haven Restaurant</p>
+                                <p>Jl. Pajajaran No. 45, Bogor | Telp: (0251) 8345-6789</p>
+                            </div>
+                            <div class="md:text-right">
+                                <p>&copy; 2026 Gourmet Haven. Hak Cipta Dilindungi Undang-Undang.</p>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+
+
+                <!-- ================= VERSION: BEFORE (SEBELUM - BAD UI) ================= -->
+                <div id="version-before-view" class="bg-gray-200 border-4 border-red-500 min-h-[600px] flex flex-col hidden text-left font-serif">
+                    <!-- Bad Navbar -->
+                    <div class="bg-yellow-300 p-2 flex flex-wrap justify-between items-center border-b-2 border-black">
+                        <div class="font-badHeadline text-pink-600 text-xs">
+                            *** GOURMET HAVEN RESTO ***
+                        </div>
+                        <div class="text-[9px] text-blue-900 underline space-x-1">
+                            <a href="#">Beranda</a> | <a href="#">Tentang</a> | <a href="#">Fasilitas</a> | <a href="#">Layanan</a> | <a href="#">Kontak</a>
+                        </div>
+                    </div>
+
+                    <!-- Bad Hero -->
+                    <div class="bg-green-200 p-3 text-center">
+                        <h1 class="font-badPapyrus text-red-600 text-lg underline">SELAMAT DATANG DI RESTORAN KAMI</h1>
+                        <p class="text-[8px] text-yellow-800 font-sans mt-1">
+                            Makan enak murah promo diskon besar besaran pesan sekarang juga sebelum kehabisan tempat terbatas ayo buruan!
+                        </p>
+                        <button class="bg-red-500 text-white font-bold text-[8px] p-0.5 border border-black mt-2">
+                            CLICK HERE TO ORDER NOW!!!
+                        </button>
+                    </div>
+
+                    <!-- Bad Content -->
+                    <div class="p-2 bg-purple-100 flex-1 space-y-3">
+                        <h2 class="text-xs font-bold text-gray-700">Daftar Menu Makanan:</h2>
+                        
+                        <div class="bad-card bg-white border border-red-400 flex items-center space-x-2">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100&h=100&fit=crop" class="bad-inner-img w-16 h-16" alt="Steak">
+                            <div>
+                                <h3 class="text-xs font-badHeadline text-green-700">Steak Daging</h3>
+                                <p class="text-[7px] text-gray-400">Harga: 185rb (murah banget)</p>
+                                <button class="bg-blue-600 text-white text-[7px] px-1">Beli</button>
+                            </div>
+                        </div>
+
+                        <div class="bad-card bg-white border border-red-400 flex items-center space-x-2">
+                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=100&h=100&fit=crop" class="bad-inner-img w-16 h-16" alt="Pasta">
+                            <div>
+                                <h3 class="text-xs font-badPapyrus text-purple-700">Pasta Keju</h3>
+                                <p class="text-[7px] text-gray-400">Harga: 120rb</p>
+                                <button class="bg-yellow-400 text-black text-[7px] px-1">Beli</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bad Footer -->
+                    <div class="bg-black text-white p-2 text-[8px] text-center">
+                        Copyright (c) Restoran 2026. Alamat: Jl. Unknown.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: LAPORAN & PENJELASAN TUGAS ================= -->
+        <section id="report-tab" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-2">Laporan Analisis UI/UX & Refactoring Design System</h2>
+                    <p class="text-slate-600 text-sm">Penjelasan mendalam mengenai daftar perubahan, identifikasi masalah visual pada versi Sebelum (Before), dan solusi berbasis Design System pada versi Sesudah (After).</p>
+                </div>
+
+                <!-- Section 1: Breakdown Masalah -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center border-b pb-2">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-500 mr-2"></i> Identifikasi Masalah Utama Pada Versi Sebelum (Before)
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-rose-50 border border-rose-200 space-y-2">
+                            <span class="text-xs font-bold text-rose-700 uppercase tracking-wide">1. Tipografi Akut (Bad Typography)</span>
+                            <p class="text-xs text-slate-700 leading-relaxed">
+                                Penggunaan font dekoratif yang tidak legibel (seperti Comic Sans/Papyrus), tidak ada hirarki ukuran teks (type scale) yang jelas, line-height terlalu sempit, dan huruf kapital berlebihan.
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-rose-50 border border-rose-200 space-y-2">
+                            <span class="text-xs font-bold text-rose-700 uppercase tracking-wide">2. Kontras & Palette Warna Berantakan</span>
+                            <p class="text-xs text-slate-700 leading-relaxed">
+                                Warna neon yang kontras tinggi (kuning bright, pink, merah keras) tanpa adanya peran yang jelas (Primary, Secondary, Neutral). Menyebabkan mata cepat lelah (eye strain).
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-rose-50 border border-rose-200 space-y-2">
+                            <span class="text-xs font-bold text-rose-700 uppercase tracking-wide">3. Inkosistensi Border Radius & Spacing</span>
+                            <p class="text-xs text-slate-700 leading-relaxed">
+                                Melanggar kaidah <em class="font-semibold">Outer Radius = 2 x Inner Radius</em>. Gambar dengan radius 25px diletakkan di dalam container ber-radius 4px, menciptakan ilusi visual yang tajam dan buruk.
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-rose-50 border border-rose-200 space-y-2">
+                            <span class="text-xs font-bold text-rose-700 uppercase tracking-wide">4. Tata Letak (Layout) & Alignment</span>
+                            <p class="text-xs text-slate-700 leading-relaxed">
+                                Tombol dan item navigasi berukuran acak, tidak responsif di perangkat mobile, serta tidak memiliki padding/margin yang proporsional sesuai skala spacing.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Solusi Berbasis Design System -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center border-b pb-2">
+                        <i class="fa-solid fa-circle-check text-brand-success mr-2"></i> Solusi & Penerapan Design System Pada Versi Sesudah (After)
+                    </h3>
+
+                    <div class="space-y-3">
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                            <h4 class="font-bold text-sm text-brand-primary">A. Penerapan Palette Warna Terstandar</h4>
+                            <p class="text-xs text-slate-600 mt-1">
+                                Menggunakan kode warna persis sesuai slide 6 PDF: Primary (<code>#573CFA</code>), Secondary (<code>#FB8D1A</code>), Neutral (<code>#1C1A27</code>), Danger (<code>#E8083E</code>), dan Success (<code>#02864A</code>). Neutral digunakan sebagai background navbar/footer dan teks utama untuk kontras optimal.
+                            </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                            <h4 class="font-bold text-sm text-brand-primary">B. Hierarchy Tipografi Konsisten (Inter Font)</h4>
+                            <p class="text-xs text-slate-600 mt-1">
+                                Mengatur Type Scale bertingkat: H1 (36px, Bold) untuk Hero Banner, H2 (24px, Bold) untuk Judul Section, H3 (18px, Semibold) untuk Judul Menu, dan Body (14-16px) dengan line-height 1.5 untuk kenyamanan membaca pengguna.
+                            </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                            <h4 class="font-bold text-sm text-brand-primary">C. Konsistensi Radius Card (Outer = 2 x Inner)</h4>
+                            <p class="text-xs text-slate-600 mt-1">
+                                Menerapkan aturan Slide 7: Outer Card memiliki <code>border-radius: 24px</code> ( rounded-3xl ) dan Inner Image memiliki <code>border-radius: 12px</code> ( rounded-xl ), menghasilkan estetika visual yang halus dan modern.
+                            </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                            <h4 class="font-bold text-sm text-brand-primary">D. Responsivitas Flex & Grid</h4>
+                            <p class="text-xs text-slate-600 mt-1">
+                                Menyesuaikan tata letak agar dinamis dari tampilan Desktop ke Mobile (375px), di mana menu card otomatis beradaptasi dari 3 kolom menjadi 1 kolom vertical stacked.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Ringkasan Tugas Individu -->
+                <div class="p-4 rounded-xl bg-indigo-50 border border-indigo-100 flex items-start space-x-3">
+                    <i class="fa-solid fa-info-circle text-brand-primary mt-0.5"></i>
+                    <div class="text-xs text-slate-700 leading-relaxed">
+                        <strong>Kesimpulan Pengerjaan Tugas:</strong> Seluruh instruksi dari dokumen PDF Pertemuan 6 (Studi Kasus Restoran, Elemen Navbar, Head Banner, Content Menu, Footer, Simple Design System, serta perbandingan Before/After) telah berhasil dibuat dan diuji secara interaktif pada aplikasi web ini.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Credit -->
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500">
+        <p>Pertemuan 6 - Visual Hierarchy, Warna, dan Tipografi &copy; 2026</p>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Tab Switcher
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-primary', 'text-white', 'shadow-sm');
+                btn.classList.add('text-slate-300');
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            activeBtn.classList.add('bg-brand-primary', 'text-white', 'shadow-sm');
+            activeBtn.classList.remove('text-slate-300');
+        }
+
+        // Mockup Version Switcher (Before vs After)
+        function setVersion(ver) {
+            const afterView = document.getElementById('version-after-view');
+            const beforeView = document.getElementById('version-before-view');
+            const btnAfter = document.getElementById('btn-ver-after');
+            const btnBefore = document.getElementById('btn-ver-before');
+
+            if (ver === 'after') {
+                afterView.classList.remove('hidden');
+                beforeView.classList.add('hidden');
+
+                btnAfter.className = "px-3 py-1.5 text-xs font-semibold rounded-lg bg-brand-primary text-white shadow-sm transition";
+                btnBefore.className = "px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition";
+            } else {
+                afterView.classList.add('hidden');
+                beforeView.classList.remove('hidden');
+
+                btnBefore.className = "px-3 py-1.5 text-xs font-semibold rounded-lg bg-rose-600 text-white shadow-sm transition";
+                btnAfter.className = "px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition";
+            }
+        }
+
+        // Mockup Device Simulator Switcher (Desktop vs Mobile)
+        function setDevice(device) {
+            const container = document.getElementById('viewport-container');
+            const btnDesktop = document.getElementById('btn-dev-desktop');
+            const btnMobile = document.getElementById('btn-dev-mobile');
+
+            if (device === 'desktop') {
+                container.className = "preview-viewport-desktop transition-all duration-300";
+                btnDesktop.className = "px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 text-white shadow-sm transition";
+                btnMobile.className = "px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition";
+            } else {
+                container.className = "preview-viewport-mobile transition-all duration-300";
+                btnMobile.className = "px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 text-white shadow-sm transition";
+                btnDesktop.className = "px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition";
+            }
+        }
+    </script>
+</body>
+</html>

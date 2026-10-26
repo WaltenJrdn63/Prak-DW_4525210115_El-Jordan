@@ -1,0 +1,191 @@
+/* ==========================================
+   1. RESET & BASIC SETUP (BOX MODEL)
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Memastikan padding & border dihitung di dalam width/height */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f6f9;
+    color: #333333;
+}
+
+/* ==========================================
+   2. HEADER & STICKY NAVIGATION
+   ========================================== */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #366da3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    color: #ffffff;
+    font-size: 24px;
+}
+
+.nav-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #ffd700;
+}
+
+/* ==========================================
+   3. HERO SECTION
+   ========================================== */
+.hero {
+    background: linear-gradient(135deg, #366da3, #1e4366);
+    color: #ffffff;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ==========================================
+   4. LAYOUT UTAMA & REUSABLE CARDS (.card)
+   ========================================== */
+.container {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #1e4366;
+}
+
+/* Grid Layout untuk 3 Kolom di Desktop */
+.services-grid {
+    display: flex;
+    gap: 25px;
+}
+
+/* Reusable Class 1: .card */
+.card {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #366da3;
+}
+
+.card p {
+    color: #666666;
+    font-size: 14px;
+}
+
+/* ==========================================
+   5. REUSABLE BUTTON (.button)
+   ========================================== */
+.scroll-top-wrapper {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Reusable Class 2: .button */
+.button {
+    display: inline-block;
+    background-color: #366da3;
+    color: #ffffff;
+    padding: 12px 28px;
+    border-radius: 25px; /* Pill-shape style */
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #2e7d32; /* Warna hijau tua saat hover */
+}
+
+/* ==========================================
+   6. FOOTER
+   ========================================== */
+.footer {
+    background-color: #366da3;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    padding: 20px;
+    border-top: 2px solid rgba(255, 255, 255, 0.2); /* 2px solid #ffffff33 */
+    margin-top: 50px;
+}
+
+/* ==========================================
+   7. MEDIA QUERY (RESPONSIVE MOBILE < 768px)
+   ========================================== */
+@media (max-width: 768px) {
+    /* Mengubah Flex Header menjadi Vertikal pada Layar Kecil */
+    .header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 20px;
+    }
+
+    .nav-menu a {
+        margin: 0 10px;
+    }
+
+    /* Mengubah 3 Kartu Layanan Menjadi 1 Kolom Vertikal */
+    .services-grid {
+        flex-direction: column;
+    }
+
+    .hero h2 {
+        font-size: 26px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+}
